@@ -7,10 +7,12 @@ import connectDB from './config/mongo';
 import LoginController from './controllers/loginController';
 import RegisterController from './controllers/registerController';
 import AdminController from './controllers/adminController';
+import UserController from './controllers/userController';
 
 const loginController = new LoginController();
 const registerController = new RegisterController();
 const adminController = new AdminController();
+const userController = new UserController();
 
 connectDB()
 
@@ -43,6 +45,10 @@ server.addService(grpcObject.user.User.service, {
   RegisterUser: registerController.registerUser,
   AdminLogin: adminController.adminLogin,
   GoogleLoginUser: loginController.googleLoginUser,
+  GetUser: userController.getUser,
+  UpdateUser: userController.updateUser,
+  ChangePassword: userController.changePassword,
+  IsBlocked: userController.isBlocked,
 });
 
 const SERVER_ADDRESS = process.env.GRPC_SERVER_PORT || '50001';

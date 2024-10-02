@@ -3,6 +3,7 @@ import LoginUseCase from '../useCases/loginUseCase';
 const loginUseCase = new LoginUseCase();
 
 export default class LoginController {
+  
   loginUser = async (
     call: { request: { email: string; password: string } },
     callback: (error: any, response: any) => void
