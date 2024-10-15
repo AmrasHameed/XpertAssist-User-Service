@@ -75,4 +75,13 @@ export default class UserRepository {
     }
   };
   
+  findAll = async () => {
+    try {
+      const users = await User.find()
+      return users;
+    } catch (error) {
+      console.error('Error finding User: ', (error as Error).message);
+      throw new Error('User search failed');
+    }
+  }; 
 }

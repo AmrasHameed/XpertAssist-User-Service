@@ -87,4 +87,36 @@ export default class UserController {
       callback(null, { error: (error as Error).message });
     }
   };
+
+  getUsers = async (
+    call: any,
+    callback: (error: any, response: any) => void
+  ) => {
+    try {
+      const users = await userUseCase.getUsers();
+      callback(null, users);
+    } catch (error) {
+      console.error('Error fetching services:', error);
+      callback(null, { error: (error as Error).message });
+    }
+  };
+
+  blockUser  = async (
+    call: {
+      request: {
+        id: string;
+        accountStatus: string;
+      };
+    },
+    callback: (error: any, response: any) => void
+  ) => {
+    try {
+      const { id, accountStatus } = call.request;
+      const response = await userUseCase.blockUser(id, accountStatus);
+      callback(null, response);
+    } catch (error) {
+      console.error('Error fetching services:', error);
+      callback(null, { error: (error as Error).message });
+    }
+  };
 }

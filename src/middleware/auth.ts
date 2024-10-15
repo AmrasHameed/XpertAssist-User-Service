@@ -7,7 +7,7 @@ export default {
     expire: string
   ): Promise<string> => {
     try {
-      const jwtSecretKey: string = process.env.USER_SECRET_KEY || 'Amras';
+      const jwtSecretKey: string = process.env.USER_SECRET_KEY || 'AmrasHameed';
       const token = jwt.sign({ clientId }, jwtSecretKey, { expiresIn: expire });
       return token;
     } catch (error) {

@@ -68,6 +68,8 @@ export default class RegisterUseCase {
           _id: user._id,
           refreshToken,
           image: user.userImage,
+          email: user.email,
+          mobile: user.mobile,
         };
       } else {
         return { message: 'UserNotCreated' };
