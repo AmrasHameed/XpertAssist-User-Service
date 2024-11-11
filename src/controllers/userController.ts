@@ -119,4 +119,23 @@ export default class UserController {
       callback(null, { error: (error as Error).message });
     }
   };
+
+  getUserData  = async (
+    call: any,
+    callback: (error: any, response: any) => void
+  ) => {
+    try {
+      const userData = await userUseCase.getUserData();
+      console.log(userData)
+      if ('overallCount' in userData && 'growthRate' in userData) {
+        callback(null, { totalUsers: userData.overallCount, userGrowthRate: userData.growthRate });
+      } else {
+        callback(null, { error: userData.message });
+      }
+    } catch (error) {
+      console.error('Error fetching services:', error);
+      callback(null, { error: (error as Error).message });
+    }
+  };
+
 }

@@ -54,6 +54,7 @@ server.addService(grpcObject.user.User.service, {
   ForgotPassOtp: loginController.forgotPassOtp,
   OtpVerify: loginController.otpVerify,
   UpdatePassword: loginController.updatePassword,
+  GetUserData: userController.getUserData,
 });
 
 const SERVER_ADDRESS = process.env.GRPC_SERVER_PORT || '50001';

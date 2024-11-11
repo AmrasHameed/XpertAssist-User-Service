@@ -116,4 +116,17 @@ export default class UserUseCase {
       return { message: (error as Error).message };
     }
   };
+
+  getUserData = async () => {
+    try {
+      const users = await userRepository.getUserCountAndGrowthRate();
+      if (users) {
+        return users;
+      } else {
+        return { message: 'No Users Found' };
+      }
+    } catch (error) {
+      return { message: (error as Error).message };
+    }
+  };
 }
