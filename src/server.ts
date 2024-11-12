@@ -62,7 +62,6 @@ const Domain =
   process.env.NODE_ENV === 'dev'
     ? process.env.DEV_DOMAIN
     : process.env.PRO_DOMAIN_USER;
-console.log(Domain);
 
 server.bindAsync(
   `${Domain}:${SERVER_ADDRESS}`,
